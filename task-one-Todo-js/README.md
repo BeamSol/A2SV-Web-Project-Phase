@@ -94,7 +94,7 @@ todo-list-app/
 ## 🙌 Author
 
 **Beamlak Solomon**  
-Frontend Developer | Software Engineer  
+Software Engineering Student | Frontend Developer 
 [LinkedIn](https://www.linkedin.com/in/beamlak-solomon-540890264/) | [GitHub](https://github.com/BeamSol)
 
 ---

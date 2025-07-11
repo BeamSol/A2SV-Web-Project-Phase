@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo List App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>TODO LIST</h1>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter a new task" />
+      <button onclick="addTask()">Add task</button>
+    </div>
+    <ul id="taskList"></ul>
+    <p id="noTaskMessage">No tasks yet.</p>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h3>Edit Task</h3>
+      <input type="text" id="editInput" />
+      <div class="modal-buttons">
+        <button id="saveEdit">Save</button>
+        <button id="cancelEdit" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

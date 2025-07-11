@@ -81,6 +81,7 @@ Tasks can be removed from the list by clicking the delete button.
 
 ## 📁 Project Structure
 
+```
 todo-list-app/
 │
 ├── index.html # Main HTML structure
@@ -88,13 +89,12 @@ todo-list-app/
 ├── script.js # JavaScript logic
 ├── README.md # This documentation
 └── screenshots/ # Screenshots used in README
+```
 
-## 🙌 Credits
+## 🙌 Author
 
-Created by Beamlak Solomon.
+**Beamlak Solomon**  
+Frontend Developer | Software Engineer  
+[LinkedIn](https://www.linkedin.com/in/beamlak-solomon-540890264/) | [GitHub](https://github.com/BeamSol)
 
 ---
-
-## 📝 License
-
-This project is open-source and free to use.

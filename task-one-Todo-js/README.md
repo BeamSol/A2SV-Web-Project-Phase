@@ -28,7 +28,7 @@ No frameworks or external libraries required.
 
 2. Navigate to the project directory:
     ```bash
-    cd todo-list-app
+    cd task-one-Todo-js
     ```
 
 3. Open `index.html` in your browser  

@@ -82,7 +82,7 @@ Tasks can be removed from the list by clicking the delete button.
 ## 📁 Project Structure
 
 ```
-todo-list-app/
+task-one-Todo-js/
 │
 ├── index.html # Main HTML structure
 ├── style.css # All styles

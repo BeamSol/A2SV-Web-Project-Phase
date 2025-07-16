@@ -138,7 +138,8 @@ task-three-Todo-react/
 ## 🙌 Author
 
 **Beamlak Solomon**
-Software Engineering Student | Frontend Developer
-🌐 [GitHub](https://github.com/BeamSol) • 💼 LinkedIn](https://www.linkedin.com/in/beamlak-solomon-540890264/)
+
+- Software Engineering Student | Frontend Developer
+- 🌐 [GitHub](https://github.com/BeamSol) • 💼 [LinkedIn](https://www.linkedin.com/in/beamlak-solomon-540890264/)
 
 ---

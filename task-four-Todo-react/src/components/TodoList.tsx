@@ -3,6 +3,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import TodoService from '../TodoService';
 import type { TodoTypes } from '../todo';
 import '../css/TodoList.css';
+import TodoForm from './TodoForm';
 
 const TodoList = () => {
     const [todos, setTodos] = useState<TodoTypes[]>(TodoService.getTodos());
@@ -53,18 +54,14 @@ const TodoList = () => {
     return (
         <div className="todo-list">
             <h2>TODO LIST</h2>
-            <div className="input-section">
-                <input
-                    type="text"
-                    value={newTodo}
-                    onChange={(e) => setNewTodo(e.target.value)}
-                    placeholder="Add a new todo"
-                />
-                <button onClick={handleAddTodo}>Add</button>
-            </div>
+            <TodoForm
+                newTodo={newTodo}
+                setNewTodo={setNewTodo}
+                handleAddTodo={handleAddTodo}
+            />
 
             <div className="todos-section">
-                {todos.length === 0 && <p className='no-tasks'>No tasks available</p>}
+                {todos.length === 0 && <p className="no-tasks">No tasks available</p>}
                 {todos.map((todo) => (
                     <div
                         key={todo.id}
@@ -77,14 +74,8 @@ const TodoList = () => {
                         />
                         <span onClick={() => handleToggleComplete(todo)}>{todo.text}</span>
                         <div className="icon-buttons">
-                            <FaEdit
-                                className="icon edit"
-                                onClick={() => handleEditTodo(todo)}
-                            />
-                            <FaTrash
-                                className="icon delete"
-                                onClick={() => handleDeleteTodo(todo.id)}
-                            />
+                            <FaEdit className="icon edit" onClick={() => handleEditTodo(todo)} />
+                            <FaTrash className="icon delete" onClick={() => handleDeleteTodo(todo.id)} />
                         </div>
                     </div>
                 ))}
@@ -100,14 +91,7 @@ const TodoList = () => {
                         placeholder="Edit todo"
                     />
                     <div className="popup-buttons">
-                        <button
-                            onClick={() =>
-                                handleUpdateTodo({
-                                    ...editingTodo,
-                                    text: editText,
-                                })
-                            }
-                        >
+                        <button onClick={() => handleUpdateTodo({ ...editingTodo, text: editText })}>
                             Update
                         </button>
                         <button className="cancel" onClick={handleCancelEdit}>

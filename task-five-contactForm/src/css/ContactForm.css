@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.contact-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #e3f2fd 0%, #fdfbfb 100%);
+}
+
+/* Form Card */
+.contact-form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.contact-form:hover {
+  transform: scale(1.01);
+}
+
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 30px;
+  color: #1a237e;
+  font-weight: 600;
+}
+
+/* Fields */
+.form-field {
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+label span {
+  color: red;
+}
+
+/* Inputs */
+input,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #3f51b5;
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.15);
+  outline: none;
+}
+
+/* Error Text */
+.error {
+  color: #d32f2f;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* Submit Button */
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #31323b;
+  color: white;
+  font-size: 17px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.success {
+  color: #4caf50;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 30px 20px;
+  }
+
+  .contact-form h2 {
+    font-size: 24px;
+  }
+
+  input,
+  textarea {
+    font-size: 15px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}

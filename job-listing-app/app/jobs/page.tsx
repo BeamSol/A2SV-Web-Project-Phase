@@ -3,7 +3,7 @@ import jobsData from '@/lib/data/jobs.json'
 import JobCard from '@/components/JobCard';
 import { JobPosting } from '@/type/jobs';
 
-const page = () => {
+const Jobs = () => {
 const data = jobsData.job_postings;
   return (
     <div>
@@ -32,4 +32,4 @@ const data = jobsData.job_postings;
   )
 }
 
-export default page
+export default Jobs

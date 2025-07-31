@@ -1,43 +1,72 @@
-# 💼 Job Listing API Integration (Task 7)
+# 💼 Job Listing User Authentication (Task 8)
 
 A modern and responsive Job Listing Dashboard built with **React (Next.js)** and **Tailwind CSS**, designed to showcase job applicants and listings in a clean, professional UI. This project is part of a hands-on task series to master frontend development through building real-world projects.
 
-This task enhances the Job Listing Application by integrating real-time data from a live API using React Query, replacing static dummy data with dynamic content from the backend. This is part of the A2SV Web Development Phase to practice full-stack integration.
+This task adds secure user authentication using **NextAuth** with API integration for user registration, verify OTP and login.
 
 
 
 ---
 
-## 🚀 Features(Updated)
- 
-- 🔄 Real-time API integration with React Query
-- 📦 Fetches job opportunities from a remote server
-- 🧠 Handles loading and error states gracefully
-- ⚡ Optimized performance through React Query's caching layer
-- ✅ Seamless replacement of static dummy data with live backend data
+### 🔐 Authentication Features
+
+- 🆕 Signup and Signin pages designed using Figma UI references
+- 🔒 Secure login via token-based authentication
+- 📬 Email verification using OTP flow
+- 🧠 Graceful error handling and form validation
+- 🔄 Integrated with provided `/signup`, `/login`, and `/verify-email` endpoints
 
 ---
 
 ## 📸 Screenshots
 
+#### 🔹 Sign In Page
+
+![Sign In Page](./public/assets/screenshots/signin.png)
+> *Simple, accessible Sign In UI with client-side validation.*
+
+---
+
+#### 🔹 Sign Up Page
+
+![Sign Up Page](./public/assets/screenshots/signup.png)
+> *Signup form with proper role selection, password validation, and form feedback.*
+
+---
+
+#### 🔹 Verify Email Page
+
+![Verify Email Page](./public/assets/screenshots/VerifyEmail.png)
+> *OTP verification *
+
+---
+
 ### 🔹 Job Listing Page (Live Data)
 
-Displays job listings fetched from the API using React Query.
+Displays job listings fetched from the API using React Query after logged in.
 
 ![Job Listing Page – View 1](./public/assets/screenshots/joblist1.png)
 > *Shows multiple applicant/job cards rendered dynamically. Cards dynamically populated from the API.*
 
 
 ---
+Displays job listings fetched from the API using React Query after logged out.
 
-### 🔹 Job Detail View
-
-Displays a single job description with applicant details.
-
-![Job Detail Page](./public/assets/screenshots/jobdetail.png)
-> *Includes job title, description, and stylized UI with proper spacing and hierarchy.*
+![Job Listing Page – View 1](./public/assets/screenshots/joblist2.png)
+> *Shows multiple applicant/job cards rendered dynamically. Cards dynamically populated from the API.*
 
 ---
+
+### 🧪 API Endpoints
+
+**Base URL**: `https://akil-backend.onrender.com/`
+
+| Endpoint           | Method | Description                         |
+|--------------------|--------|-------------------------------------|
+| `/signup`          | POST   | Register a new user                 |
+| `/verify-email`    | POST   | Verify user email via OTP           |
+| `/login`           | POST   | Authenticate user and return token  |
+
 
 ## 🛠️ Tech Stack
 
@@ -46,6 +75,7 @@ Displays a single job description with applicant details.
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com)
 - **Data Fetching**: [React Query](https://tanstack.com/query)
 - **Icons**: [Heroicons](https://heroicons.com)
+- **Auth**: [NextAuth](https://next-auth.js.org)
 
 ---
 
@@ -54,44 +84,55 @@ Displays a single job description with applicant details.
 job-listing-app/
 │
 ├── app/
+│   ├── auth/
+│   │   ├── signin/page.tsx        # Signin Page
+│   │   ├── verifyEmail/page.tsx   # Verify Email Page
+│   │   └── signup/page.tsx        # Signup Page
 │   ├── jobs/
-│   │   ├── [id]/                   # Dynamic route for job detail page
-│   │   └── page.tsx                # Job listing dashboard page
-│   ├── favicon.ico                 # Favicon for the app
-│   ├── globals.css                 # Tailwind base styles
-│   ├── layout.tsx                  # App layout component
-│   ├── page.tsx                    # Root (home) page
-│   └── provider.tsx                # Redux and React Query provider setup
+│   │   ├── [id]/                  # Dynamic route for job detail
+│   │   └── page.tsx               # Job listings
+│   ├── api/auth/[...nextauth]
+│   │   ├── options.ts     
+│   │   └── route.ts                         
+│   ├── globals.css                # Tailwind base styles
+│   ├── layout.tsx                 # App layout
+│   ├── page.tsx                   # Home page
+│   └── provider.tsx               # Context/Providers (Redux, Query)
 │
 ├── components/
-│   ├── about.tsx                   # About section 
-│   ├── JobCard.tsx                 # Job card UI component
-│   └── tag.tsx                     # Tag/Badge component
+│   ├── about.tsx
+│   ├── JobCard.tsx
+│   ├── tag.tsx
+│   ├── Login.tsx
+│   ├── Signup.tsx
+│   ├── Nav.tsx
+│   └── VerifyEmail.tsx               
 │
 ├── lib/
 │   ├── service/
-│   │   └── opportunitiesApi.ts     # API service to fetch opportunities
-│   └── store.ts                    # Redux store setup
+│   │   ├── opportunitiesApi.ts    # Job API calls
+│   │   └── authApi.ts             # Auth API calls
+│   └── store.ts                   # Redux store
 │
 ├── public/
 │   └── assets/
-│       ├── screenshots/            # Screenshot images for README
-│       │   ├── joblist1.png
-│       │   └── jobdetail.png            
+│       └── screenshots/           # Screenshots used in README
+│           ├── joblist1.png
+│           ├── joblist2png
+│           ├── VerifyEmail.png
+│           ├── signin.png
+│           └── signup.png
 │
 ├── type/
-│   ├── about.ts                    # Type definitions for about section
-│   └── jobs.ts                     # Type definitions for job data
+│   ├── jobs.ts
+│   └── auth.ts
 │
 ├── .gitignore
 ├── README.md
 ├── package.json
-├── package-lock.json
 ├── tsconfig.json
 ├── next.config.ts
-├── postcss.config.mjs
-├── eslint.config.mjs
-└── next-env.d.ts
+└── postcss.config.mjs
 ```
 ## 🔌 API Endpoint Reference
 
@@ -111,9 +152,6 @@ job-listing-app/
 - **Description:** Fetches a specific opportunity using its unique ID.  
 - **Example:** `/opportunities/6526382983jsdu8d7`
 
-### 📚 Full API Documentation
-- [View Postman Docs](https://documenter.getpostman.com/view/27955515/2sA3rwMEUX)
-
 ---
 
 ## 📦 Installation & Setup
@@ -123,7 +161,7 @@ job-listing-app/
 git clone https://github.com/BeamSol/A2SV-Web-Project-Phase.git
 
 # Navigate into the project
-cd job-listing-app-task7
+cd job-listing-app-task8
 
 # Install dependencies
 npm install

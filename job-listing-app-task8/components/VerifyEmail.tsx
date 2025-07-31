@@ -91,11 +91,11 @@ const VerifyEmail = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-5">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg">
-        <h1 className="text-3xl font-bold text-center text-gray-900 mb-2">
+      <div className="max-w-md w-full ">
+        <h1 className="text-3xl font-main font-bold text-center text-gray-900 mb-10">
           Verify Email
         </h1>
-        <p className="text-center text-gray-600 mb-6">
+        <p className="text-gray-600 text-center mb-16">
           We've sent a verification code to the email address you
           provided. To complete the verification process, please
           enter the code here.
@@ -112,7 +112,7 @@ const VerifyEmail = () => {
         )}
 
         <form onSubmit={handleVerify} className="space-y-6">
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-center space-x-11 ">
             {[0, 1, 2, 3].map((index) => (
               <input
                 key={index}
@@ -128,7 +128,7 @@ const VerifyEmail = () => {
             ))}
           </div>
 
-          <p className="text-center text-gray-600 text-sm">
+          <p className="text-center text-gray-600 text-sm mb-16">
             You can request to{" "}
             <button
               type="button"

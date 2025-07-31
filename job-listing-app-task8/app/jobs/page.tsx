@@ -2,7 +2,6 @@
 import React from 'react';
 import JobCard from '@/components/JobCard';
 import { Opportunity } from '@/type/jobs';
-import { signOut } from "next-auth/react";
 import { useGetOpportunitiesQuery } from '@/lib/service/opportunitiesApi';
 
 const Jobs = () => {
@@ -16,13 +15,7 @@ const Jobs = () => {
 
   return (
     <div>
-       <div className="flex justify-end mr-30">
-        <button
-        onClick={() => signOut()}
-        className="px-4 py-4 bg-[#25324B] text-white rounded-2xl hover:bg-stone-900 transition mt-5"
-      >signout</button>
-        </div>
-        <div className="max-w-3xl mx-auto py-20 px-4">
+        <div className="max-w-3xl mx-auto py-10 px-4">
           <div className="flex justify-between items-center ">
             <div>
               <h1 className="text-3xl font-extrabold">Opportunities</h1>

@@ -66,7 +66,7 @@ const SignUp = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-10">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-center text-blue-950 mb-6">
+        <h1 className="text-3xl font-main font-semibold text-center text-blue-950 mb-6">
           Sign Up Today!
         </h1>
 

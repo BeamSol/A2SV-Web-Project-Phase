@@ -3,6 +3,7 @@ import Jobs from "./jobs/page";
 import getServerSession from "next-auth";
 import { options } from "./api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
+import Nav from "../components/Nav";
 
 export default async function Home() {
   const session = await getServerSession(options);
@@ -12,6 +13,7 @@ export default async function Home() {
   }
   return (
     <div> 
+      <Nav />
       <Jobs />
     </div>
   )

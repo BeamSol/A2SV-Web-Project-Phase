@@ -39,6 +39,7 @@ const Login = () => {
 
     if (res?.ok) {
       router.push('/');
+      console.log('Login successful data:', res);
     } else if (res?.error === 'CredentialsSignin') {
       setLoginError('Invalid email or password.');
     } else {
@@ -48,9 +49,9 @@ const Login = () => {
 
   return (
     <div className="flex flex-row justify-center items-center min-h-screen bg-white">
-      <div> </div>
+      <div className='w-1/3 bg-gray-300'> </div>
       <div className="w-full max-w-md p-8 shadow-lg rounded-lg">
-        <h1 className="text-4xl text-blue-950 text-center font-extrabold mb-10">
+        <h1 className="text-4xl text-blue-950 font-main text-center font-bold pb-3 mb-10 border-b border-gray-200 ">
           Welcome Back,
         </h1>
 
@@ -64,7 +65,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Email input */}
           <div className="mb-6">
-            <label className="block text-gray-600 text-lg mb-2 font-semibold">
+            <label className="block text-gray-600 text-base mb-2 font-semibold">
               Email Address
             </label>
             <input
@@ -78,7 +79,7 @@ const Login = () => {
 
           {/* Password input */}
           <div className="mb-6">
-            <label className="block text-gray-600 text-lg mb-2 font-semibold">
+            <label className="block text-gray-600 text-base mb-2 font-semibold">
               Password
             </label>
             <input
@@ -106,7 +107,7 @@ const Login = () => {
 
         <p className="mt-6 text-center text-gray-600">
           Don't have an account?{' '}
-          <Link href="/signup" className="text-blue-600 font-semibold hover:underline">
+          <Link href="/signup" className="text-indigo-950 font-semibold hover:underline">
             Sign Up
           </Link>
         </p>

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { store } from "../lib/store";
-import { Providers } from "./provider";
-import {AuthProvider} from "./Authprovider";
+import { Providers } from "./(provider)/Reduxprovider";
+import {AuthProvider} from "./(provider)/Authprovider";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,6 +13,13 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
   subsets: ["latin"],
 });
 
@@ -28,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         <Providers>
           <AuthProvider>    

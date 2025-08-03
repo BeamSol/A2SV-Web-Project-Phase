@@ -13,6 +13,7 @@ import {
   useAddBookmarkMutation,
   useRemoveBookmarkMutation,
 } from '@/lib/service/bookmarkService';
+import toast from 'react-hot-toast';
 
 export default function JobCard({ job, index }: { job: Opportunity; index: number }) {
   const { data: session } = useSession();
@@ -43,7 +44,8 @@ export default function JobCard({ job, index }: { job: Opportunity; index: numbe
     e.preventDefault(); 
 
     if (!token) {
-      alert('You need to be logged in to bookmark a job.');
+      // alert('You need to be logged in to bookmark a job.');
+      toast.error('You need to be logged in to bookmark a job.');
       redirect('/login');
       return;
     }
@@ -51,11 +53,14 @@ export default function JobCard({ job, index }: { job: Opportunity; index: numbe
     try {
       if (isBookmarked) {
         await removeBookmark({ jobId: job.id, token });
+        toast.success('Removed from bookmarks');
       } else {
         await addBookmark({ jobId: job.id, token });
+        toast.success('Added to bookmarks');
       }
       setIsBookmarked(!isBookmarked);
     } catch (error) {
+      toast.error('Something went wrong while toggling bookmark.');
       console.error('Bookmark toggle failed:', error);
     }
   };

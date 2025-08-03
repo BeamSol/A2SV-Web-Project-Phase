@@ -4,6 +4,7 @@ import "./globals.css";
 import { store } from "../lib/store";
 import { Providers } from "./(provider)/Reduxprovider";
 import {AuthProvider} from "./(provider)/Authprovider";
+import { Toaster } from 'react-hot-toast';
 
 
 // const geistSans = Geist({
@@ -39,8 +40,9 @@ export default function RootLayout({
         className={` antialiased`}
       >
         <Providers>
-          <AuthProvider>    
+          <AuthProvider>   
             {children}
+            <Toaster position="top-center" reverseOrder={false}/>
           </AuthProvider>
         </Providers>
       </body>

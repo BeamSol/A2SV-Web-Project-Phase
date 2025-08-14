@@ -28,3 +28,24 @@ Cypress.Commands.add('logout', () => {
     win.localStorage.removeItem('next-auth.session-token');
   });
 });
+// cypress/support/e2e.ts
+
+// This will run after each test in every spec file.
+afterEach(() => {
+  // We check the state of the test to ensure it passed.
+  if (cy.state('test').state === 'passed') {
+    // A little logic to sanitize the test title for use as a filename
+    // Replaces spaces and special characters with underscores
+    const testTitle = cy.state('test').title.replace(/[\s"“':>]/g, '_');
+
+    // We construct a filename that includes the parent suite titles
+    // This creates a nice folder structure, e.g., /Bookmark_Functionality/as_an_authenticated_user/
+    const screenshotName = `${cy.state('test').parent.title}/${testTitle}`;
+
+    // Take the screenshot and save it with our custom name
+    cy.screenshot(screenshotName, {
+      capture: 'runner', // Captures the entire Cypress Runner window
+      overwrite: true,
+    });
+  }
+});

@@ -36,25 +36,47 @@
 //   }
 // }
 
-Cypress.Commands.add('mockBookmarksApi', (status = 200, response = { data: [] }) => {
-  cy.intercept('GET', '/api/bookmarks', {
-    statusCode: status,
-    body: response,
-  }).as('getBookmarks');
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Sets up the intercept for a logged-in session. Does NOT create an alias.
+       */
+      stubSessionAsLoggedIn(): Chainable<void>;
+
+      /**
+       * Sets up the intercept for a logged-out session. Does NOT create an alias.
+       */
+      stubSessionAsLoggedOut(): Chainable<void>;
+
+      mockOpportunitiesApi(status?: number, response?: any): Chainable<void>;
+    }
+  }
+}
+
+/**
+ * Sets up the API intercept for a valid, authenticated user session.
+ * The test (`it` block) is responsible for aliasing this intercept if it needs to be awaited.
+ */
+Cypress.Commands.add('stubSessionAsLoggedIn', () => {
+  cy.intercept('GET', '/api/auth/session', {
+    statusCode: 200,
+    body: {
+      user: { name: 'Test User', email: 'test@example.com' },
+      accessToken: 'mock-jwt-token-for-testing',
+    },
+  });
 });
 
-Cypress.Commands.add('mockAddBookmarkApi', (status = 200, response = {}) => {
-  cy.intercept('POST', '/api/bookmarks', {
-    statusCode: status,
-    body: response,
-  }).as('addBookmark');
-});
-
-Cypress.Commands.add('mockRemoveBookmarkApi', (status = 200, response = {}) => {
-  cy.intercept('DELETE', '/api/bookmarks/*', {
-    statusCode: status,
-    body: response,
-  }).as('removeBookmark');
+/**
+ * Sets up the API intercept for a logged-out user session.
+ */
+Cypress.Commands.add('stubSessionAsLoggedOut', () => {
+  cy.intercept('GET', '/api/auth/session', {
+    statusCode: 200,
+    body: {},
+  });
 });
 
 Cypress.Commands.add('mockOpportunitiesApi', (status = 200, response = { data: [] }) => {
